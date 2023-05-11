@@ -31,9 +31,9 @@ namespace Stays.source
 
             position = velocity;
         }
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            playerAnimation.Draw(spriteBatch, position);
+            playerAnimation.Draw(spriteBatch, position, gameTime, 100);
             //spriteBatch.Draw(spriteSheet, position, Color.White);
         }
 
