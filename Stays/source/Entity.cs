@@ -5,6 +5,12 @@ namespace Stays.source
 {
     public abstract class Entity
     {
+        public enum currentAnimation
+        {
+            Idle,
+            Run,
+        }
+
         public Texture2D spriteSheet;
         public Vector2 position;
 

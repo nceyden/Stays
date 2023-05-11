@@ -27,8 +27,10 @@ namespace Stays.source
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            _playerSprite = Content.Load<Texture2D>("Sprite Pack 4\\1 - Agent_Mike_Running (32 x 32)");
-            _player = new Player(_playerSprite);
+            _player = new Player(
+                Content.Load<Texture2D>("Sprite Pack 4\\1 - Agent_Mike_Idle (32 x 32)"),
+                Content.Load<Texture2D>("Sprite Pack 4\\1 - Agent_Mike_Running (32 x 32)")
+                );
         }
 
         protected override void Update(GameTime gameTime)
