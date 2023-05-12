@@ -10,9 +10,9 @@ namespace Stays.source
             Idle,
             Run,
         }
-
-        public Texture2D spriteSheet;
+        
         public Vector2 position;
+        public Rectangle hitbox;
 
         public abstract void Update();
         public abstract void Draw(SpriteBatch spriteBatch, GameTime gameTime);
