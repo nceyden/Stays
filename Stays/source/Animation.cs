@@ -18,12 +18,12 @@ namespace Stays.source
             Console.WriteLine(frames);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position, GameTime gameTime, float milisecondsPerFrames = 500)
+        public void Draw(SpriteBatch spriteBatch, Vector2 position, GameTime gameTime, float milisecondsPerFrames = 500, SpriteEffects effect = SpriteEffects.None)
         {
             if (count < frames)
             {
                 var rectangle = new Rectangle(32 * count, rows, 32, 32);
-                spriteBatch.Draw(spriteSheet, position, rectangle, Color.White);
+                spriteBatch.Draw(spriteSheet, position, rectangle, Color.White, 0f, new Vector2(), 1f, effect, 1);
                 timeSinceLastFrame += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
                 if (timeSinceLastFrame > milisecondsPerFrames)

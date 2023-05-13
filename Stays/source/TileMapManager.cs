@@ -5,11 +5,10 @@ using System.Collections.Generic;
 using System.Text;
 using TiledSharp;
 
-namespace platformerYT.src
+namespace Stays.src
 {
     public class TilemapManager
     {
-
         TmxMap map;
         Texture2D tileset;
         RenderTarget2D renderTarget;

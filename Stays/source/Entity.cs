@@ -9,10 +9,12 @@ namespace Stays.source
         {
             Idle,
             Run,
+            Jumping,
+            Falling
         }
         
-        public Vector2 position;
-        public Rectangle hitbox;
+        public Vector2 position;   // позиция на экране
+        public Rectangle hitbox;   //  хитбокс в виде прямоугольника
 
         public abstract void Update();
         public abstract void Draw(SpriteBatch spriteBatch, GameTime gameTime);
