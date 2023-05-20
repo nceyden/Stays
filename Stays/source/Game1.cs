@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Apos.Gui;
+using FontStashSharp;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Stays.src;
@@ -12,12 +14,19 @@ namespace Stays.source
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private RenderTarget2D _renderTarget;
 
         public static float screenWidth;
         public static float screenHeight;
 
+        #region UI
+        IMGUI _ui;
+        Texture2D coinIcon;
+        #endregion UI
+
         #region Managers
         private GameManager _gameManager;
+        //private bool isGameOver = false;
         #endregion Managers
 
         #region Tilemaps
@@ -46,6 +55,9 @@ namespace Stays.source
         private Texture2D _bulletTexture;
         private int _time_between_bullets;
         private int _points = 0;
+        private int _playerHealth = 10;
+        private int _timeBetweenHurt = 20;
+        private int _hitCounter = 0;
 
         #endregion Player
         public Game1()
@@ -67,6 +79,13 @@ namespace Stays.source
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            //#region UI
+            //FontSystem fontSystem = FontSystemFactory.Create(GraphicsDevice, 2048, 2048);
+            //fontSystem.AddFont(TitleContainer.OpenStream($"{Content.RootDirectory}/dogicapixel.ttf"));
+            //GuiHelper.Setup(this, fontSystem);
+            //_ui = new IMGUI();
+            //#endregion UI
 
             #region TileMap
             _map = new TmxMap("Content\\Level1.tmx");    // загрузка уровня
@@ -138,17 +157,30 @@ namespace Stays.source
                 );
             _enemies.Add(_martian);
             #endregion
+
+            _renderTarget = new RenderTarget2D(GraphicsDevice, 1024, 800);
         }
 
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+            #region UI
+            #endregion UI
 
             #region Enemy
             foreach (var enemy in _enemies)
             {
                 enemy.Update();
+                if (enemy.hasHit(_player.hitbox))
+                {
+                    _hitCounter++;
+                    if (_hitCounter > _timeBetweenHurt)
+                    {
+                        _playerHealth--;
+                        _hitCounter = 0;
+                    }
+                }
             }
             #endregion Enemy
 
@@ -162,6 +194,11 @@ namespace Stays.source
             {
                 Console.WriteLine("GAME OVER");
             }
+            if (_playerHealth <= 0)
+            {
+                Console.WriteLine("YPU DIED!");
+            }
+            Console.WriteLine($"Health: {_playerHealth}");
             #endregion Managers
 
             #region Bullet
@@ -248,15 +285,34 @@ namespace Stays.source
                     break;
                 }
             }
-            #endregion 
+            #endregion
+
+            //#region UI
+            //GuiHelper.UpdateSetup(gameTime);
+            //_ui.UpdateAll(gameTime);
+
+            //Panel.Push().XY = new Vector2(10, 10);
+
+            //Label.Put($"Points: {_points}");
+            //Panel.Pop();
+            //Panel.Push().XY = new Vector2(10, 50);
+
+            //Label.Put($"Health: {_playerHealth}");
+            //Panel.Pop();
+            //GuiHelper.UpdateCleanup();
+            //#endregion
+
+            DrawLevel(gameTime);
             base.Update(gameTime);
         }
 
-        protected override void Draw(GameTime gameTime)
+        public void DrawLevel(GameTime gameTime)
         {
+
+            GraphicsDevice.SetRenderTarget(_renderTarget);
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            _spriteBatch.Begin();
+            _spriteBatch.Begin(transformMatrix: transformMatrix);
             _tilemapManager.Draw(_spriteBatch);
 
             #region Enemy
@@ -266,8 +322,32 @@ namespace Stays.source
             }
             #endregion
 
+            #region Player
+
+
+            #region Bullets
+
+            foreach (var bullet in _bullets.ToArray())
+            {
+                bullet.Draw(_spriteBatch);
+            }
+            #endregion
+
             _player.Draw(_spriteBatch, gameTime);
+
+            #endregion
+
             _spriteBatch.End();
+            GraphicsDevice.SetRenderTarget(null);
+
+        }
+        protected override void Draw(GameTime gameTime)
+        {
+            _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
+
+            _spriteBatch.Draw(_renderTarget, new Vector2(0, 0), null, Color.White, 0f, new Vector2(), 2f, SpriteEffects.None, 0);
+            _spriteBatch.End();
+
             base.Draw(gameTime);
         }
     }

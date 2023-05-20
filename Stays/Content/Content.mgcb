@@ -13,6 +13,11 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin bin/DesktopGL/dogicapixel.ttf
+/importer:
+/processor:
+/build:bin/DesktopGL/dogicapixel.ttf
+
 #begin Cave Tileset/_Complete_static_BG_(288 x 208).png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -36,6 +41,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Cave Tileset/Brown_Tile_Terrain (16 x 16).png
+
+#begin Cave Tileset/full.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Cave Tileset/full.png
 
 #begin Cave Tileset/Gray_Tile_Terrain (16 x 16).png
 /importer:TextureImporter
@@ -61,8 +78,101 @@
 /processorParam:TextureFormat=Color
 /build:Cave Tileset/Scaffolding_and_BG_Parts (16 x 16).png
 
-#begin Level1.tmx
-/copy:Level1.tmx
+#begin Common Pick-ups/Coin (16 x 16).png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Common Pick-ups/Coin (16 x 16).png
+
+#begin Common Pick-ups/Health_Kit (16 x 16).png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Common Pick-ups/Health_Kit (16 x 16).png
+
+#begin Common Pick-ups/Heart_Spin (16 x 16).png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Common Pick-ups/Heart_Spin (16 x 16).png
+
+#begin Common Pick-ups/Small_Coin (16 x 16).png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Common Pick-ups/Small_Coin (16 x 16).png
+
+#begin Common Pick-ups/Treasure_Chest (32 x 16).png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Common Pick-ups/Treasure_Chest (32 x 16).png
+
+#begin Common Pick-ups/Wrapped_Presents (16 x 16).png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Common Pick-ups/Wrapped_Presents (16 x 16).png
+
+#begin dogicapixel.ttf
+/copy:dogicapixel.ttf
+
+#begin level1.tmx
+/copy:level1.tmx
+
+#begin sfx/collect.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sfx/collect.wav
+
+#begin sfx/enemyDie.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sfx/enemyDie.wav
+
+#begin sfx/shoot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sfx/shoot.wav
 
 #begin Sprite Pack 4/1 - Agent_Mike_Bullet (16 x 16).png
 /importer:TextureImporter

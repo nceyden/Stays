@@ -23,6 +23,7 @@ namespace Stays.src
 
             map = _map;
             tileset = _tileset;
+            RenderTarget2D renderTarget2D = renderTarget;
             tilesetTilesWide = _tilesetTilesWide;
             tileWidth = _tileWidth;
             tileHeight = _tileHeight;
@@ -44,7 +45,6 @@ namespace Stays.src
                     int gid = map.TileLayers[i].Tiles[j].Gid;
                     if (gid == 0)
                     {
-                        //do nothing
                     }
                     else
                     {
